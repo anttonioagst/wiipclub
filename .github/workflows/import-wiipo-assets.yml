@@ -10,6 +10,7 @@ on:
       - cursor/classroom-aula-e833
       - cursor/wiipo-stickers-logo-e833
       - cursor/community-icon-concepts-e833
+      - cursor/empty-subscribe-mascots-e833
       - main
     paths:
       - ".github/workflows/import-wiipo-assets.yml"
@@ -26,7 +27,7 @@ jobs:
         run: |
           set -euo pipefail
           BASE=https://wiipclub-production.up.railway.app/wiipo
-          mkdir -p public/wiipo/capa public/wiipo/perfil public/wiipo/ui public/wiipo/modelo public/wiipo/classroom public/wiipo/logo public/wiipo/stickers public/wiipo/icones
+          mkdir -p public/wiipo/capa public/wiipo/perfil public/wiipo/ui public/wiipo/modelo public/wiipo/classroom public/wiipo/logo public/wiipo/stickers public/wiipo/icones public/wiipo/empty public/wiipo/assinatura
           curl -fsSL "$BASE/capa/comece-aqui.jpg" -o public/wiipo/capa/comece-aqui.jpg
           curl -fsSL "$BASE/capa/work-in-public.jpg" -o public/wiipo/capa/work-in-public.jpg
           curl -fsSL "$BASE/capa/hero.jpg" -o public/wiipo/capa/hero.jpg
@@ -53,7 +54,13 @@ jobs:
           for f in busto rosto frente tres-quartos peek wave; do
             curl -fsSL "$BASE/icones/$f.png" -o "public/wiipo/icones/$f.png"
           done
-          file public/wiipo/icones/busto.png
+          for f in comments posts; do
+            curl -fsSL "$BASE/empty/$f.png" -o "public/wiipo/empty/$f.png"
+          done
+          for f in idle peek point celebrate create-wave create-present; do
+            curl -fsSL "$BASE/assinatura/$f.png" -o "public/wiipo/assinatura/$f.png"
+          done
+          file public/wiipo/empty/comments.png
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
@@ -63,5 +70,5 @@ jobs:
             echo "No image changes"
             exit 0
           fi
-          git commit -m "Add community icon concepts"
+          git commit -m "Import Wiipo empty and assinatura assets"
           git push
