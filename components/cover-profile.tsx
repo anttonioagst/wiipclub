@@ -2,11 +2,19 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { coverSlides, wiipoAssets } from "@/lib/wiipo-assets";
+import {
+  coverSlides,
+  wiipoAssets,
+  type GallerySlide,
+} from "@/lib/wiipo-assets";
 
-export function CoverProfile() {
+export function CoverProfile({
+  slides = coverSlides,
+}: {
+  slides?: readonly GallerySlide[];
+}) {
   const [active, setActive] = useState(0);
-  const current = coverSlides[active];
+  const current = slides[active] ?? slides[0];
 
   return (
     <section className="overflow-hidden rounded-[21px] border border-[#D4D4D4] bg-white">
@@ -22,7 +30,7 @@ export function CoverProfile() {
         />
       </div>
       <div className="flex gap-2 overflow-x-auto p-4 md:grid md:grid-cols-3">
-        {coverSlides.map((slide, index) => (
+        {slides.map((slide, index) => (
           <button
             key={slide.src}
             type="button"

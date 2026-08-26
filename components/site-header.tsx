@@ -4,6 +4,7 @@ import { wiipoAssets } from "@/lib/wiipo-assets";
 
 const nav = [
   { href: "/", label: "comunidade" },
+  { href: "/info", label: "info" },
   { href: "/classroom", label: "classroom" },
 ] as const;
 
