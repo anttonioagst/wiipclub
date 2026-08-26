@@ -19,6 +19,10 @@ export const wiipoAssets = {
     ficha: "/wiipo/modelo/ficha.jpg",
     turnaround: "/wiipo/modelo/turnaround.jpg",
   },
+  classroom: {
+    empty: "/wiipo/classroom/empty.png",
+    emptySolo: "/wiipo/classroom/empty-solo.png",
+  },
 } as const;
 
 export const coverSlides = [

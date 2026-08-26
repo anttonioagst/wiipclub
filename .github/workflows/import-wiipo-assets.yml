@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - cursor/wiipo-cover-assets-e833
+      - cursor/classroom-empty-wiipo-e833
       - main
     paths:
       - ".github/workflows/import-wiipo-assets.yml"
@@ -21,7 +22,7 @@ jobs:
         run: |
           set -euo pipefail
           BASE=https://wiipclub-production.up.railway.app/wiipo
-          mkdir -p public/wiipo/capa public/wiipo/perfil public/wiipo/ui public/wiipo/modelo
+          mkdir -p public/wiipo/capa public/wiipo/perfil public/wiipo/ui public/wiipo/modelo public/wiipo/classroom
           curl -fsSL "$BASE/capa/comece-aqui.jpg" -o public/wiipo/capa/comece-aqui.jpg
           curl -fsSL "$BASE/capa/work-in-public.jpg" -o public/wiipo/capa/work-in-public.jpg
           curl -fsSL "$BASE/capa/hero.jpg" -o public/wiipo/capa/hero.jpg
@@ -34,7 +35,9 @@ jobs:
           curl -fsSL "$BASE/ui/celebrate.jpg" -o public/wiipo/ui/celebrate.jpg
           curl -fsSL "$BASE/modelo/ficha.jpg" -o public/wiipo/modelo/ficha.jpg
           curl -fsSL "$BASE/modelo/turnaround.jpg" -o public/wiipo/modelo/turnaround.jpg
-          file public/wiipo/capa/comece-aqui.jpg public/wiipo/perfil/avatar.jpg
+          curl -fsSL "$BASE/classroom/empty.png" -o public/wiipo/classroom/empty.png
+          curl -fsSL "$BASE/classroom/empty-solo.png" -o public/wiipo/classroom/empty-solo.png
+          file public/wiipo/capa/comece-aqui.jpg public/wiipo/classroom/empty.png
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
@@ -44,5 +47,5 @@ jobs:
             echo "No image changes"
             exit 0
           fi
-          git commit -m "Add Wiipo cover, profile and UI images"
+          git commit -m "Add Wiipo classroom empty-state images"
           git push

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { CoverProfile } from "@/components/cover-profile";
+import { SiteHeader } from "@/components/site-header";
 import { SubscribeButton } from "@/components/subscribe-button";
 import { wiipoAssets } from "@/lib/wiipo-assets";
 
@@ -14,22 +15,7 @@ const uiSprites = [
 export default function Home() {
   return (
     <div className="bg-[#F8F7F5]">
-      <header className="sticky top-0 z-10 border-b border-[#D4D4D4] bg-white/95 backdrop-blur">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-          <div className="flex items-center gap-2.5">
-            <Image
-              src={wiipoAssets.perfil.avatar}
-              alt=""
-              width={32}
-              height={32}
-              className="h-8 w-8 rounded-lg object-cover"
-            />
-            <span className="font-mono text-base text-[#2D2B30] md:text-lg">
-              wiip.club
-            </span>
-          </div>
-        </div>
-      </header>
+      <SiteHeader active="/" />
 
       <main className="mx-auto grid max-w-6xl grid-cols-1 items-start gap-8 px-4 py-10 lg:grid-cols-3">
         <div className="flex flex-col gap-8 lg:col-span-2">
