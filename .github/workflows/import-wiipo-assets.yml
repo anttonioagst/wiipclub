@@ -1,0 +1,67 @@
+name: Import Wiipo assets
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - cursor/wiipo-cover-assets-e833
+      - cursor/classroom-empty-wiipo-e833
+      - cursor/club-info-gallery-e833
+      - cursor/classroom-aula-e833
+      - cursor/wiipo-stickers-logo-e833
+      - cursor/community-icon-concepts-e833
+      - main
+    paths:
+      - ".github/workflows/import-wiipo-assets.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download images from production
+        run: |
+          set -euo pipefail
+          BASE=https://wiipclub-production.up.railway.app/wiipo
+          mkdir -p public/wiipo/capa public/wiipo/perfil public/wiipo/ui public/wiipo/modelo public/wiipo/classroom public/wiipo/logo public/wiipo/stickers public/wiipo/icones
+          curl -fsSL "$BASE/capa/comece-aqui.jpg" -o public/wiipo/capa/comece-aqui.jpg
+          curl -fsSL "$BASE/capa/work-in-public.jpg" -o public/wiipo/capa/work-in-public.jpg
+          curl -fsSL "$BASE/capa/hero.jpg" -o public/wiipo/capa/hero.jpg
+          curl -fsSL "$BASE/capa/conquistas.jpg" -o public/wiipo/capa/conquistas.jpg
+          curl -fsSL "$BASE/capa/vagas.jpg" -o public/wiipo/capa/vagas.jpg
+          curl -fsSL "$BASE/capa/linkedin.jpg" -o public/wiipo/capa/linkedin.jpg
+          curl -fsSL "$BASE/perfil/avatar.jpg" -o public/wiipo/perfil/avatar.jpg
+          curl -fsSL "$BASE/perfil/avatar-cream.jpg" -o public/wiipo/perfil/avatar-cream.jpg
+          curl -fsSL "$BASE/ui/peek.jpg" -o public/wiipo/ui/peek.jpg
+          curl -fsSL "$BASE/ui/wave.jpg" -o public/wiipo/ui/wave.jpg
+          curl -fsSL "$BASE/ui/point.jpg" -o public/wiipo/ui/point.jpg
+          curl -fsSL "$BASE/ui/idle.jpg" -o public/wiipo/ui/idle.jpg
+          curl -fsSL "$BASE/ui/celebrate.jpg" -o public/wiipo/ui/celebrate.jpg
+          curl -fsSL "$BASE/modelo/ficha.jpg" -o public/wiipo/modelo/ficha.jpg
+          curl -fsSL "$BASE/modelo/turnaround.jpg" -o public/wiipo/modelo/turnaround.jpg
+          curl -fsSL "$BASE/classroom/empty.png" -o public/wiipo/classroom/empty.png
+          curl -fsSL "$BASE/classroom/empty-solo.png" -o public/wiipo/classroom/empty-solo.png
+          for f in mark wordmark lockup lockup-flat rosto-3d; do
+            curl -fsSL "$BASE/logo/$f.png" -o "public/wiipo/logo/$f.png"
+          done
+          for f in oficial-idle oficial-wave oficial-think oficial-peek oficial-sit oficial-point bone oculos gorro fone coroa cachecol; do
+            curl -fsSL "$BASE/stickers/$f.png" -o "public/wiipo/stickers/$f.png"
+          done
+          for f in busto rosto frente tres-quartos peek wave; do
+            curl -fsSL "$BASE/icones/$f.png" -o "public/wiipo/icones/$f.png"
+          done
+          file public/wiipo/icones/busto.png
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/wiipo
+          if git diff --staged --quiet; then
+            echo "No image changes"
+            exit 0
+          fi
+          git commit -m "Add community icon concepts"
+          git push
