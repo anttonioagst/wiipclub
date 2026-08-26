@@ -41,8 +41,8 @@ export default function AssetsPage() {
             Logo
           </h1>
           <p className="mt-2 max-w-2xl font-sans text-sm text-[#737373]">
-            Wordmark arredondado no lugar do pixel. O mark é o rosto do
-            ornitorrinco em círculo — o mesmo selo que aparecia nas capas.
+            O mark é o mesmo ícone do lockup, recortado: squircle com o
+            rosto do Wiipo. O nome no produto continua Geist Pixel.
           </p>
           <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
             {logos.map((logo) => (
