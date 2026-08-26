@@ -47,7 +47,60 @@ export const wiipoAssets = {
     coroa: "/wiipo/stickers/coroa.png",
     cachecol: "/wiipo/stickers/cachecol.png",
   },
+  icones: {
+    busto: "/wiipo/icones/busto.png",
+    rosto: "/wiipo/icones/rosto.png",
+    frente: "/wiipo/icones/frente.png",
+    tresQuartos: "/wiipo/icones/tres-quartos.png",
+    peek: "/wiipo/icones/peek.png",
+    wave: "/wiipo/icones/wave.png",
+  },
 } as const;
+
+export const communityIconConcepts = [
+  {
+    src: wiipoAssets.icones.busto,
+    id: "busto",
+    title: "Busto pensativo",
+    note: "Mais perto do ícone atual da comunidade. Bom pra perfil.",
+  },
+  {
+    src: wiipoAssets.icones.rosto,
+    id: "rosto",
+    title: "Close do rosto",
+    note: "Lê melhor em 48–64px. Chapéu + bico bem visíveis.",
+  },
+  {
+    src: wiipoAssets.icones.frente,
+    id: "frente",
+    title: "Corpo inteiro",
+    note: "Mais mascote, menos retrato. Bom se o tile for grande.",
+  },
+  {
+    src: wiipoAssets.icones.tresQuartos,
+    id: "tres-quartos",
+    title: "Três quartos",
+    note: "Um pouco mais de volume e personalidade.",
+  },
+  {
+    src: wiipoAssets.icones.wave,
+    id: "wave",
+    title: "Acenando",
+    note: "Saudação. Combina com empty state e onboarding.",
+  },
+  {
+    src: wiipoAssets.icones.peek,
+    id: "peek",
+    title: "Peek",
+    note: "Saindo do tile. Mais brincalhão.",
+  },
+  {
+    src: wiipoAssets.logo.mark,
+    id: "selo",
+    title: "Selo squircle",
+    note: "Logo mark. O fundo do selo é o próprio corpo.",
+  },
+] as const;
 
 export const officialStickers = [
   { src: wiipoAssets.stickers.oficialIdle, label: "idle" },

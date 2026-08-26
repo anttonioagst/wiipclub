@@ -9,6 +9,7 @@ on:
       - cursor/club-info-gallery-e833
       - cursor/classroom-aula-e833
       - cursor/wiipo-stickers-logo-e833
+      - cursor/community-icon-concepts-e833
       - main
     paths:
       - ".github/workflows/import-wiipo-assets.yml"
@@ -25,7 +26,7 @@ jobs:
         run: |
           set -euo pipefail
           BASE=https://wiipclub-production.up.railway.app/wiipo
-          mkdir -p public/wiipo/capa public/wiipo/perfil public/wiipo/ui public/wiipo/modelo public/wiipo/classroom public/wiipo/logo public/wiipo/stickers
+          mkdir -p public/wiipo/capa public/wiipo/perfil public/wiipo/ui public/wiipo/modelo public/wiipo/classroom public/wiipo/logo public/wiipo/stickers public/wiipo/icones
           curl -fsSL "$BASE/capa/comece-aqui.jpg" -o public/wiipo/capa/comece-aqui.jpg
           curl -fsSL "$BASE/capa/work-in-public.jpg" -o public/wiipo/capa/work-in-public.jpg
           curl -fsSL "$BASE/capa/hero.jpg" -o public/wiipo/capa/hero.jpg
@@ -49,7 +50,10 @@ jobs:
           for f in oficial-idle oficial-wave oficial-think oficial-peek oficial-sit oficial-point bone oculos gorro fone coroa cachecol; do
             curl -fsSL "$BASE/stickers/$f.png" -o "public/wiipo/stickers/$f.png"
           done
-          file public/wiipo/logo/mark.png public/wiipo/stickers/oficial-wave.png
+          for f in busto rosto frente tres-quartos peek wave; do
+            curl -fsSL "$BASE/icones/$f.png" -o "public/wiipo/icones/$f.png"
+          done
+          file public/wiipo/icones/busto.png
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
@@ -59,5 +63,5 @@ jobs:
             echo "No image changes"
             exit 0
           fi
-          git commit -m "Update logo mark and lockup to squircle"
+          git commit -m "Add community icon concepts"
           git push
