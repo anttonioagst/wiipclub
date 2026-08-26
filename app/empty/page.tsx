@@ -1,5 +1,6 @@
 import { AssinaturaDemo, CriarComunidadeDemo } from "@/components/assinatura-mascote";
 import { EmptyState } from "@/components/empty-state";
+import { SkoolCta, SkoolPricingDemo } from "@/components/skool-cta";
 import { SiteHeader } from "@/components/site-header";
 import { assinaturaFrames, emptyStates } from "@/lib/wiipo-assets";
 import Image from "next/image";
@@ -25,6 +26,23 @@ export default function EmptyPage() {
                 <EmptyState src={item.src} title={item.title} text={item.text} />
               </div>
             ))}
+          </div>
+        </section>
+
+        <section>
+          <h2 className="font-sans text-xl font-bold text-[#2D2B30]">
+            CTA no ritmo do Skool
+          </h2>
+          <p className="mt-1 max-w-2xl font-sans text-sm leading-relaxed text-[#737373]">
+            O gato deita na borda do botão amarelo. O Wiipo faz o mesmo —
+            recorte transparente, botão HTML.
+          </p>
+          <div className="mt-6">
+            <SkoolPricingDemo />
+          </div>
+          <div className="mt-4 flex flex-col gap-6 rounded-[21px] border border-[#D4D4D4] bg-white px-6 py-8 md:flex-row md:justify-center">
+            <SkoolCta label="criar comunidade" pose="loaf" />
+            <SkoolCta label="criar comunidade" pose="perch" tone="ink" />
           </div>
         </section>
 
