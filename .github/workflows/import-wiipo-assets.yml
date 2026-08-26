@@ -11,6 +11,7 @@ on:
       - cursor/wiipo-stickers-logo-e833
       - cursor/community-icon-concepts-e833
       - cursor/empty-subscribe-mascots-e833
+      - cursor/lockup-exact-mark-e833
       - main
     paths:
       - ".github/workflows/import-wiipo-assets.yml"
@@ -60,7 +61,7 @@ jobs:
           for f in idle peek point celebrate create-wave create-present; do
             curl -fsSL "$BASE/assinatura/$f.png" -o "public/wiipo/assinatura/$f.png"
           done
-          file public/wiipo/empty/comments.png
+          file public/wiipo/logo/mark.png
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
@@ -70,5 +71,5 @@ jobs:
             echo "No image changes"
             exit 0
           fi
-          git commit -m "Import Wiipo empty and assinatura assets"
+          git commit -m "Import lockup-exact Wiipo mark"
           git push
