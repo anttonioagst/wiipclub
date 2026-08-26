@@ -14,10 +14,11 @@ export function SubscribeButton({ label = "assinar" }: SubscribeButtonProps) {
   return (
     <div className="group/subscribe relative isolate flex justify-center pt-16">
       <Image
-        src={joined ? wiipoAssets.ui.celebrate : wiipoAssets.ui.peek}
+        src={joined ? wiipoAssets.assinatura.celebrate : wiipoAssets.assinatura.peek}
         alt=""
         width={160}
         height={160}
+        unoptimized
         className={`pointer-events-none absolute -top-2 left-1/2 z-0 w-28 origin-bottom -translate-x-1/2 object-contain drop-shadow-md transition-all duration-300 ease-out ${
           joined
             ? "translate-y-0 scale-100 opacity-100"

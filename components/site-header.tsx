@@ -7,6 +7,7 @@ const nav = [
   { href: "/classroom", label: "classroom" },
   { href: "/assets", label: "assets" },
   { href: "/icones", label: "ícones" },
+  { href: "/empty", label: "empty" },
 ] as const;
 
 export function SiteHeader({ active }: { active: (typeof nav)[number]["href"] }) {
