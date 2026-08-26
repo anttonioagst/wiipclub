@@ -7,6 +7,7 @@ on:
       - cursor/wiipo-cover-assets-e833
       - cursor/classroom-empty-wiipo-e833
       - cursor/club-info-gallery-e833
+      - cursor/classroom-aula-e833
       - main
     paths:
       - ".github/workflows/import-wiipo-assets.yml"
@@ -51,5 +52,5 @@ jobs:
             echo "No image changes"
             exit 0
           fi
-          git commit -m "Add Wiip Club info gallery covers"
+          git commit -m "Update classroom empty-state with aula scene"
           git push

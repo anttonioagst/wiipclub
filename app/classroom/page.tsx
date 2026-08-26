@@ -10,11 +10,11 @@ export default function ClassroomPage() {
         <Image
           src={wiipoAssets.classroom.empty}
           alt=""
-          width={980}
-          height={630}
+          width={1100}
+          height={656}
           priority
           unoptimized
-          className="h-auto w-full max-w-[420px] object-contain"
+          className="h-auto w-full max-w-[560px] object-contain"
         />
         <h1 className="mt-8 text-center font-mono text-2xl font-bold text-[#2D2B30]">
           Ainda não tem curso
