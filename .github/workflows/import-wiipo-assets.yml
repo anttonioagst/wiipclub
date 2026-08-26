@@ -8,6 +8,7 @@ on:
       - cursor/classroom-empty-wiipo-e833
       - cursor/club-info-gallery-e833
       - cursor/classroom-aula-e833
+      - cursor/wiipo-stickers-logo-e833
       - main
     paths:
       - ".github/workflows/import-wiipo-assets.yml"
@@ -24,7 +25,7 @@ jobs:
         run: |
           set -euo pipefail
           BASE=https://wiipclub-production.up.railway.app/wiipo
-          mkdir -p public/wiipo/capa public/wiipo/perfil public/wiipo/ui public/wiipo/modelo public/wiipo/classroom
+          mkdir -p public/wiipo/capa public/wiipo/perfil public/wiipo/ui public/wiipo/modelo public/wiipo/classroom public/wiipo/logo public/wiipo/stickers
           curl -fsSL "$BASE/capa/comece-aqui.jpg" -o public/wiipo/capa/comece-aqui.jpg
           curl -fsSL "$BASE/capa/work-in-public.jpg" -o public/wiipo/capa/work-in-public.jpg
           curl -fsSL "$BASE/capa/hero.jpg" -o public/wiipo/capa/hero.jpg
@@ -42,7 +43,13 @@ jobs:
           curl -fsSL "$BASE/modelo/turnaround.jpg" -o public/wiipo/modelo/turnaround.jpg
           curl -fsSL "$BASE/classroom/empty.png" -o public/wiipo/classroom/empty.png
           curl -fsSL "$BASE/classroom/empty-solo.png" -o public/wiipo/classroom/empty-solo.png
-          file public/wiipo/capa/comece-aqui.jpg public/wiipo/classroom/empty.png
+          for f in mark wordmark lockup lockup-flat rosto-3d; do
+            curl -fsSL "$BASE/logo/$f.png" -o "public/wiipo/logo/$f.png"
+          done
+          for f in oficial-idle oficial-wave oficial-think oficial-peek oficial-sit oficial-point bone oculos gorro fone coroa cachecol; do
+            curl -fsSL "$BASE/stickers/$f.png" -o "public/wiipo/stickers/$f.png"
+          done
+          file public/wiipo/logo/mark.png public/wiipo/stickers/oficial-wave.png
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
@@ -52,5 +59,5 @@ jobs:
             echo "No image changes"
             exit 0
           fi
-          git commit -m "Update classroom empty-state with aula scene"
+          git commit -m "Add Wiipo sticker kit and rounded logo"
           git push

@@ -26,7 +26,46 @@ export const wiipoAssets = {
     empty: "/wiipo/classroom/empty.png",
     emptySolo: "/wiipo/classroom/empty-solo.png",
   },
+  logo: {
+    mark: "/wiipo/logo/mark.png",
+    wordmark: "/wiipo/logo/wordmark.png",
+    lockup: "/wiipo/logo/lockup.png",
+    lockupFlat: "/wiipo/logo/lockup-flat.png",
+    rosto3d: "/wiipo/logo/rosto-3d.png",
+  },
+  stickers: {
+    oficialIdle: "/wiipo/stickers/oficial-idle.png",
+    oficialWave: "/wiipo/stickers/oficial-wave.png",
+    oficialThink: "/wiipo/stickers/oficial-think.png",
+    oficialPeek: "/wiipo/stickers/oficial-peek.png",
+    oficialSit: "/wiipo/stickers/oficial-sit.png",
+    oficialPoint: "/wiipo/stickers/oficial-point.png",
+    bone: "/wiipo/stickers/bone.png",
+    oculos: "/wiipo/stickers/oculos.png",
+    gorro: "/wiipo/stickers/gorro.png",
+    fone: "/wiipo/stickers/fone.png",
+    coroa: "/wiipo/stickers/coroa.png",
+    cachecol: "/wiipo/stickers/cachecol.png",
+  },
 } as const;
+
+export const officialStickers = [
+  { src: wiipoAssets.stickers.oficialIdle, label: "idle" },
+  { src: wiipoAssets.stickers.oficialWave, label: "wave" },
+  { src: wiipoAssets.stickers.oficialThink, label: "think" },
+  { src: wiipoAssets.stickers.oficialPeek, label: "peek" },
+  { src: wiipoAssets.stickers.oficialSit, label: "sit" },
+  { src: wiipoAssets.stickers.oficialPoint, label: "point" },
+] as const;
+
+export const outfitStickers = [
+  { src: wiipoAssets.stickers.bone, label: "boné" },
+  { src: wiipoAssets.stickers.oculos, label: "óculos" },
+  { src: wiipoAssets.stickers.gorro, label: "gorro" },
+  { src: wiipoAssets.stickers.fone, label: "fone" },
+  { src: wiipoAssets.stickers.coroa, label: "coroa" },
+  { src: wiipoAssets.stickers.cachecol, label: "cachecol" },
+] as const;
 
 export const coverSlides = [
   {
