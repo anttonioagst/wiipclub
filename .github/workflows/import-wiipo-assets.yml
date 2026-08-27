@@ -12,6 +12,7 @@ on:
       - cursor/community-icon-concepts-e833
       - cursor/empty-subscribe-mascots-e833
       - cursor/lockup-exact-mark-e833
+      - cursor/skool-button-wiipo-e833
       - main
     paths:
       - ".github/workflows/import-wiipo-assets.yml"
@@ -58,10 +59,10 @@ jobs:
           for f in comments posts; do
             curl -fsSL "$BASE/empty/$f.png" -o "public/wiipo/empty/$f.png"
           done
-          for f in idle peek point celebrate create-wave create-present; do
+          for f in idle peek point celebrate create-wave create-present loaf loaf-side perch; do
             curl -fsSL "$BASE/assinatura/$f.png" -o "public/wiipo/assinatura/$f.png"
           done
-          file public/wiipo/logo/mark.png
+          file public/wiipo/assinatura/loaf.png public/wiipo/assinatura/perch.png
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
@@ -71,5 +72,5 @@ jobs:
             echo "No image changes"
             exit 0
           fi
-          git commit -m "Import lockup-exact Wiipo mark"
+          git commit -m "Add loaf and perch Wiipo PNGs to the repo"
           git push
