@@ -1,2 +1,7 @@
-# wiipclub
-Wiip Club — comunidade work in public. Mascote Wiipo, capa, perfil e assets de UI.
+# Wiip Club
+
+[![Wiip Club — work in public](hero.jpg)](https://wiip.club)
+
+Comunidade work in public.
+
+Site: [https://wiip.club](https://wiip.club)
